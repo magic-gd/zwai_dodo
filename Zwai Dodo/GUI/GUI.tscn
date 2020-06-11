@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Player/HealthHeart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/GUI/dogface.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.632653 )
+colors = PoolColorArray( 0.0864258, 0.216965, 0.921875, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="HealthDisplay" type="GridContainer" parent="."]
+anchor_left = 0.024
+anchor_top = 0.023
+anchor_right = 0.533
+anchor_bottom = 0.113
+margin_left = 0.424
+margin_top = 0.199999
+margin_right = 0.207947
+margin_bottom = 0.199997
+rect_clip_content = true
+columns = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthHeart" parent="HealthDisplay" instance=ExtResource( 2 )]
+margin_bottom = 53.0
+
+[node name="AmmoDisplay" type="TextureProgress" parent="."]
+anchor_left = 0.562
+anchor_top = 0.04
+anchor_right = 0.844
+anchor_bottom = 0.107
+margin_left = 0.511963
+margin_top = -1.90735e-06
+margin_right = -1.25604
+margin_bottom = -0.200005
+max_value = 200.0
+step = 0.5
+texture_progress = SubResource( 2 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesDisplay" type="Control" parent="."]
+anchor_left = 0.875
+anchor_right = 0.992
+anchor_bottom = 0.133
+margin_left = -6.10352e-05
+margin_top = 16.0
+margin_right = 0.191956
+margin_bottom = 0.199997
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LivesDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="LivesDisplay/HBoxContainer"]
+margin_right = 58.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="LivesDisplay/HBoxContainer"]
+margin_left = 62.0
+margin_right = 120.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "10"
+align = 1
+valign = 1

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/Environment/Background/bg_large_1.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 928.0 ]
+}
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 2500, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 0, 3835.37, 924.951 )

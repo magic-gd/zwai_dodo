@@ -1,0 +1,217 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/Dragon/dragon_sheet.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Enemies/Boss2/BossMover.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyShape2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionArea/HurtShape2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Mouth:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -128, -16 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyShape3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionArea/HurtShape3:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "sit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyShape2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionArea/HurtShape2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Mouth:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -240, -192 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionArea/HurtShape3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyShape3:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Dragon" instance=ExtResource( 1 )]
+collision_mask = 3
+health = 50
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -416, -560 )
+scale = Vector2( 0.631893, 0.631893 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+frame = 1
+
+[node name="BodyShape" parent="." index="1"]
+visible = false
+position = Vector2( -16, -32 )
+disabled = true
+
+[node name="BodyShape2" type="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -160, -224, -192, -16, -64, 0, -32, -160, 64, -32, 32, 96, 144, 128, 160, 48, 304, 64, 288, 128, 384, 144, 432, -48, 528, -96, 720, 16, 912, 192, 720, -128, 112, -240, 80, -304, 704, -448, 528, -512, -176, -448, 48, -256 )
+
+[node name="BodyShape3" type="CollisionPolygon2D" parent="." index="3"]
+polygon = PoolVector2Array( 64, -320, -240, -256, -208, -144, -224, 0, -64, 256, 112, 192, 320, 272, 448, 208, 672, -64, 656, -80, 448, 112, 352, 208, 288, 192, 400, 16, 400, -256, 224, -528, 176, -256, 112, -192 )
+disabled = true
+
+[node name="ThrowPoint" parent="." index="4"]
+position = Vector2( 176, -128 )
+
+[node name="AutoMover" parent="." index="5"]
+enabled = false
+
+[node name="HurtShape" parent="CollisionArea" index="0"]
+visible = false
+position = Vector2( 576, -16 )
+disabled = true
+
+[node name="HurtShape2" type="CollisionPolygon2D" parent="CollisionArea" index="1"]
+polygon = PoolVector2Array( -176, -224, -208, -16, -64, 16, -16, -128, 48, -32, 16, 128, 144, 160, 176, 64, 288, 80, 272, 160, 384, 176, 432, 64, 448, -32, 528, -80, 720, 16, 912, 208, 944, 208, 880, 32, 720, -144, 448, -208, 112, -256, 112, -288, 160, -304, 720, -448, 560, -512, 240, -528, -80, -480, -192, -448, 16, -256 )
+
+[node name="HurtShape3" type="CollisionPolygon2D" parent="CollisionArea" index="2"]
+polygon = PoolVector2Array( 80, -336, -256, -256, -240, -144, -208, -96, -272, -80, -272, 32, -160, 0, -96, 288, 112, 208, 320, 272, 464, 208, 688, -80, 672, -96, 352, 192, 304, 176, 384, 64, 416, -32, 416, -256, 352, -416, 224, -544, 160, -256, 112, -208, 80, -336 )
+disabled = true
+
+[node name="DragonAnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+anims/fly = SubResource( 1 )
+anims/sit = SubResource( 2 )
+
+[node name="DragonMover" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+
+[node name="ShootTimer" type="Timer" parent="DragonMover" index="0"]
+one_shot = true
+
+[node name="MoveTimer" type="Timer" parent="DragonMover" index="1"]
+one_shot = true
+
+[node name="Mouth" type="Position2D" parent="." index="10"]
+position = Vector2( -128, -16 )
+[connection signal="timeout" from="DragonMover/ShootTimer" to="DragonMover" method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="DragonMover/MoveTimer" to="DragonMover" method="_on_MoveTimer_timeout"]

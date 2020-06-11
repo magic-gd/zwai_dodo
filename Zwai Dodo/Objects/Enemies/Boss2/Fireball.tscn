@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/Dragon/fireball_sheet.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Enemies/Boss2/FireballMover.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 17.0
+height = 94.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 21.1245
+height = 100.716
+
+[node name="Fireball" instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 0
+health = 1
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 0 )
+rotation = 0.35706
+scale = Vector2( 0.305556, 0.305556 )
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="BodyShape" parent="." index="1"]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="AutoMover" parent="." index="3"]
+enabled = false
+
+[node name="HurtShape" parent="CollisionArea" index="0"]
+position = Vector2( 3.05176e-05, 1.52588e-05 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="FireballMover" type="Node" parent="." index="6"]
+script = ExtResource( 3 )
+
+[node name="DespawnTimer" type="Timer" parent="FireballMover" index="0"]
+wait_time = 4.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="FireballMover/DespawnTimer" to="FireballMover" method="_on_DespawnTimer_timeout"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Objects/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/MadBaby/mad_baby.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Enemies/Boss1/BossMover.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 21.8893
+height = 188.602
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 25.5692
+height = 107.713
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 96.0
+height = 320.0
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 38.3063
+height = 188.602
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 39.4256
+height = 107.713
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 128.0
+height = 288.0
+
+[node name="MadBaby" instance=ExtResource( 1 )]
+health = 10
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -352, -400 )
+scale = Vector2( 0.921569, 0.921569 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ArmShape" type="CollisionShape2D" parent="." index="1"]
+position = Vector2( -160, -96 )
+rotation = -0.349066
+shape = SubResource( 1 )
+
+[node name="ArmShape2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2( 208, -128 )
+rotation = 0.349066
+shape = SubResource( 1 )
+
+[node name="LegShape" type="CollisionShape2D" parent="." index="3"]
+position = Vector2( -112, 224 )
+rotation = 0.523599
+shape = SubResource( 2 )
+
+[node name="LegShape2" type="CollisionShape2D" parent="." index="4"]
+position = Vector2( 144, 224 )
+rotation = -0.523599
+shape = SubResource( 2 )
+
+[node name="BodyShape" parent="." index="5"]
+position = Vector2( 0, -64 )
+shape = SubResource( 3 )
+
+[node name="AutoMover" parent="." index="7"]
+enabled = false
+
+[node name="ArmShape" type="CollisionShape2D" parent="CollisionArea" index="0"]
+position = Vector2( -160, -96 )
+rotation = -0.349066
+shape = SubResource( 4 )
+
+[node name="ArmShape2" type="CollisionShape2D" parent="CollisionArea" index="1"]
+position = Vector2( 208, -128 )
+rotation = 0.349066
+shape = SubResource( 4 )
+
+[node name="LegShape" type="CollisionShape2D" parent="CollisionArea" index="2"]
+position = Vector2( -112, 224 )
+rotation = 0.523599
+shape = SubResource( 5 )
+
+[node name="LegShape2" type="CollisionShape2D" parent="CollisionArea" index="3"]
+position = Vector2( 144, 224 )
+rotation = -0.523599
+shape = SubResource( 5 )
+
+[node name="HurtShape" parent="CollisionArea" index="4"]
+position = Vector2( 0, -64 )
+shape = SubResource( 6 )
+
+[node name="BossMover" type="Node" parent="." index="10"]
+script = ExtResource( 3 )
+
+[node name="JumpTimer" type="Timer" parent="BossMover" index="0"]
+[connection signal="timeout" from="BossMover/JumpTimer" to="BossMover" method="_on_JumpTimer_timeout"]

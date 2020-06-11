@@ -1,0 +1,152 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/Tiles/dirt_auto_tile.tres" type="TileSet" id=1]
+[ext_resource path="res://Objects/Player/Dodo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Enemies/Cloud/CloudEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Triggers/LevelEnd.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Enemies/Spike.tscn" type="PackedScene" id=5]
+
+[node name="Level2" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -304.0, 816.0 ],
+"_edit_vertical_guides_": [ 2752.0, -256.0, 2496.0 ]
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1441768, 0, 196613, -458757, 0, 6, -458756, 0, 196609, -458755, 0, 196609, -458754, 0, 196609, -458753, 0, 196609, -524288, 0, 196609, -524287, 0, 196609, -524286, 0, 196609, -524285, 0, 196609, -524284, 0, 196609, -524283, 0, 196609, -524282, 0, 196609, -524281, 0, 196609, -524280, 0, 196609, -524279, 0, 196609, -524278, 0, 196609, -524277, 0, 196609, -524276, 0, 196609, -524275, 0, 196609, -524274, 0, 196609, -524273, 0, 196609, -524272, 0, 196609, -524271, 0, 196609, -524270, 0, 196609, -524269, 0, 196609, -524268, 0, 196609, -524267, 0, 196609, -524266, 0, 196609, -524265, 0, 196609, -524264, 0, 196609, -524263, 0, 196609, -524262, 0, 196609, -524261, 0, 196609, -524260, 0, 196609, -524259, 0, 196609, -524258, 0, 196609, -524257, 0, 196609, -524256, 0, 196609, -524255, 0, 196609, -524254, 0, 196609, -524253, 0, 196609, -524252, 0, 196609, -524251, 0, 196609, -524250, 0, 196609, -524249, 0, 196609, -524248, 0, 196609, -524247, 0, 196609, -524246, 0, 196609, -524245, 0, 7, -393221, 0, 65541, -458709, 0, 65541, -327685, 0, 65541, -393173, 0, 65541, -262149, 0, 65541, -327637, 0, 65541, -196613, 0, 65541, -262101, 0, 65541, -131077, 0, 65541, -196565, 0, 65541, -65541, 0, 65541, -131029, 0, 65541, -5, 0, 65541, -65493, 0, 65541, 65531, 0, 65541, 43, 0, 65541, 131067, 0, 65541, 65579, 0, 65541, 196603, 0, 65541, 131115, 0, 65541, 262139, 0, 65541, 196651, 0, 65541, 327675, 0, 65541, 262187, 0, 65541, 393211, 0, 65541, 327717, 0, 196608, 327718, 0, 196609, 327719, 0, 131076, 327720, 0, 196609, 327721, 0, 196609, 327722, 0, 196609, 327723, 0, 65543, 458747, 0, 65541, 393232, 0, 196608, 393233, 0, 196609, 393234, 0, 196609, 393235, 0, 196610, 393247, 0, 196608, 393248, 0, 196609, 393249, 0, 196609, 393250, 0, 196610, 393255, 0, 65541, 524283, 0, 8, 524284, 0, 65536, 524285, 0, 65536, 524286, 0, 65536, 524287, 0, 65536, 458752, 0, 65536, 458753, 0, 65536, 458754, 0, 65536, 458755, 0, 65536, 458756, 0, 65536, 458757, 0, 2, 458791, 0, 65541, 589819, 0, 131073, 589820, 0, 196619, 589821, 0, 196619, 589822, 0, 196619, 589823, 0, 196619, 524288, 0, 196619, 524289, 0, 196619, 524290, 0, 196619, 524291, 0, 196619, 524292, 0, 196619, 524293, 0, 131074, 524297, 0, 196608, 524298, 0, 196609, 524299, 0, 196610, 524312, 0, 196608, 524313, 0, 196609, 524314, 0, 196609, 524315, 0, 196610, 524327, 0, 65541, 655355, 0, 131073, 655356, 0, 196619, 655357, 0, 196619, 655358, 0, 196619, 655359, 0, 196619, 589824, 0, 196619, 589825, 0, 196619, 589826, 0, 196619, 589827, 0, 196619, 589828, 0, 196619, 589829, 0, 131074, 589863, 0, 65541, 720891, 0, 131073, 720892, 0, 196619, 720893, 0, 196619, 720894, 0, 196619, 720895, 0, 196619, 655360, 0, 196619, 655361, 0, 196619, 655362, 0, 196619, 655363, 0, 196619, 655364, 0, 196619, 655365, 0, 131074, 655399, 0, 65541, 786427, 0, 131073, 786428, 0, 196619, 786429, 0, 196619, 786430, 0, 196619, 786431, 0, 196619, 720896, 0, 196619, 720897, 0, 196619, 720898, 0, 196619, 720899, 0, 196619, 720900, 0, 196619, 720901, 0, 131074, 720935, 0, 65541, 851963, 0, 131073, 851964, 0, 196619, 851965, 0, 196619, 851966, 0, 196619, 851967, 0, 196619, 786432, 0, 196619, 786433, 0, 196619, 786434, 0, 196619, 786435, 0, 196619, 786436, 0, 196619, 786437, 0, 65539, 786438, 0, 65536, 786439, 0, 65536, 786440, 0, 65536, 786441, 0, 65536, 786442, 0, 65536, 786443, 0, 65536, 786444, 0, 65536, 786445, 0, 65536, 786446, 0, 65536, 786447, 0, 65536, 786448, 0, 65536, 786449, 0, 65536, 786450, 0, 65536, 786451, 0, 65536, 786452, 0, 65536, 786453, 0, 65536, 786454, 0, 65536, 786455, 0, 65536, 786456, 0, 65536, 786457, 0, 65536, 786458, 0, 65536, 786459, 0, 65536, 786460, 0, 65536, 786461, 0, 65536, 786462, 0, 65536, 786463, 0, 65536, 786464, 0, 65536, 786465, 0, 65536, 786466, 0, 65536, 786467, 0, 65536, 786468, 0, 65536, 786469, 0, 65536, 786470, 0, 65536, 786471, 0, 11, 917499, 0, 65537, 917500, 0, 131072, 917501, 0, 131072, 917502, 0, 131072, 917503, 0, 131072, 851968, 0, 131072, 851969, 0, 131072, 851970, 0, 131072, 851971, 0, 131072, 851972, 0, 131072, 851973, 0, 131072, 851974, 0, 131072, 851975, 0, 131072, 851976, 0, 131072, 851977, 0, 131072, 851978, 0, 131072, 851979, 0, 131072, 851980, 0, 131072, 851981, 0, 131072, 851982, 0, 131072, 851983, 0, 131072, 851984, 0, 131072, 851985, 0, 131072, 851986, 0, 131072, 851987, 0, 131072, 851988, 0, 131072, 851989, 0, 131072, 851990, 0, 131072, 851991, 0, 131072, 851992, 0, 131072, 851993, 0, 131072, 851994, 0, 131072, 851995, 0, 131072, 851996, 0, 131072, 851997, 0, 131072, 851998, 0, 131072, 851999, 0, 131072, 852000, 0, 131072, 852001, 0, 131072, 852002, 0, 131072, 852003, 0, 131072, 852004, 0, 131072, 852005, 0, 131072, 852006, 0, 131072, 852007, 0, 65538 )
+
+[node name="Dodo" parent="." instance=ExtResource( 2 )]
+position = Vector2( -112, 384 )
+
+[node name="Camera2D" type="Camera2D" parent="Dodo"]
+offset = Vector2( 0, -100 )
+current = true
+zoom = Vector2( 2, 2 )
+limit_left = -256
+limit_top = -300
+limit_right = 2496
+limit_bottom = 816
+limit_smoothed = true
+smoothing_enabled = true
+offset_h = 1.0
+offset_v = -0.65
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Spikes" type="Node" parent="Enemies"]
+
+[node name="Spike" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 384, 704 )
+
+[node name="Spike2" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 448, 704 )
+
+[node name="Spike3" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 512, 704 )
+
+[node name="Spike4" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 576, 704 )
+
+[node name="Spike5" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 640, 704 )
+
+[node name="Spike6" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 704, 704 )
+
+[node name="Spike7" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 768, 704 )
+
+[node name="Spike8" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 832, 704 )
+
+[node name="Spike9" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 896, 704 )
+
+[node name="Spike10" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 960, 704 )
+
+[node name="Spike11" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1024, 704 )
+
+[node name="Spike12" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1088, 704 )
+
+[node name="Spike13" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1152, 704 )
+
+[node name="Spike14" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1216, 704 )
+
+[node name="Spike15" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1280, 704 )
+
+[node name="Spike16" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1344, 704 )
+
+[node name="Spike17" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1408, 704 )
+
+[node name="Spike18" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1472, 704 )
+
+[node name="Spike19" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1536, 704 )
+
+[node name="Spike20" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1600, 704 )
+
+[node name="Spike21" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1664, 704 )
+
+[node name="Spike22" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1728, 704 )
+
+[node name="Spike23" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1792, 704 )
+
+[node name="Spike24" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1856, 704 )
+
+[node name="Spike25" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1920, 704 )
+
+[node name="Spike26" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 1984, 704 )
+
+[node name="Spike27" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2048, 704 )
+
+[node name="Spike28" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2112, 704 )
+
+[node name="Spike29" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2176, 704 )
+
+[node name="Spike30" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2240, 704 )
+
+[node name="Spike31" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2304, 704 )
+
+[node name="Spike32" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2368, 704 )
+
+[node name="Spike33" parent="Enemies/Spikes" instance=ExtResource( 5 )]
+position = Vector2( 2432, 704 )
+
+[node name="CloudEnemy" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 1184, 96 )
+
+[node name="CloudEnemy2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 2128, 96 )
+
+[node name="LevelEnd" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2624, 64 )
+scale = Vector2( 1, 2 )
+next_level_path = "res://World/Levels/Level4.tscn"

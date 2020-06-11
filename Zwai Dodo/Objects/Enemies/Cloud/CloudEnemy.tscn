@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Objects/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/Cloud/angry_cloud.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/Cloud/bolt.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Enemies/Cloud/CloudEnemy.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 48.3953
+height = 45.733
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 56.5645
+height = 45.18
+
+[sub_resource type="RayShape2D" id=3]
+length = 433.24
+
+[sub_resource type="Animation" id=4]
+resource_name = "strike"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CollisionArea/BoltHurtShape:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BoltSprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 64, 0 ), Rect2( 0, 0, 64, 223 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BoltSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="CloudEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="BodyShape" parent="." index="1"]
+rotation = 1.5708
+scale = Vector2( 1, 0.988724 )
+shape = SubResource( 1 )
+
+[node name="AutoMover" parent="." index="3"]
+enabled = false
+
+[node name="HurtShape" parent="CollisionArea" index="0"]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="BoltHurtShape" type="CollisionShape2D" parent="CollisionArea" index="1"]
+position = Vector2( 0, 72 )
+scale = Vector2( 1, 0.36 )
+shape = SubResource( 3 )
+
+[node name="BoltSpawner" type="Position2D" parent="." index="5"]
+position = Vector2( 0, 56.168 )
+
+[node name="BoltSprite" type="Sprite" parent="BoltSpawner" index="0"]
+visible = false
+position = Vector2( 0, 17 )
+scale = Vector2( 1, 0.7 )
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -50, 0 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 223 )
+
+[node name="SpawnTimer" type="Timer" parent="BoltSpawner" index="1"]
+wait_time = 2.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoltSpawner" index="2"]
+anims/strike = SubResource( 4 )
+[connection signal="timeout" from="BoltSpawner/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

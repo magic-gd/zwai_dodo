@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/Player/gun.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Player/LaserGun.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Particles/fire_particle.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/beam.png" type="Texture" id=4]
+[ext_resource path="res://Logic/ControllerInput.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.8307
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.84106 )
+colors = PoolColorArray( 1, 0.802734, 0, 1, 1, 1, 1, 1 )
+
+[node name="LaserGun" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.328009, 0.328009 )
+texture = ExtResource( 1 )
+offset = Vector2( 70, 0 )
+
+[node name="ShootPoint" type="Position2D" parent="Sprite"]
+position = Vector2( 264.96, 3.46709 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite/ShootPoint"]
+enabled = true
+collision_mask = 13
+
+[node name="LaserBeam" type="Sprite" parent="Sprite/ShootPoint"]
+modulate = Color( 1, 0.356863, 0.356863, 1 )
+position = Vector2( 0.0613403, 1.14197 )
+scale = Vector2( 3.0487, 1.14248 )
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( 0, -12 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 40, 23 )
+
+[node name="LaserEnd" type="Position2D" parent="Sprite/ShootPoint"]
+
+[node name="HurtArea" type="Area2D" parent="Sprite/ShootPoint/LaserEnd"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/ShootPoint/LaserEnd/HurtArea"]
+shape = SubResource( 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite/ShootPoint/LaserEnd"]
+amount = 32
+lifetime = 0.3
+texture = ExtResource( 3 )
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+initial_velocity = 200.0
+initial_velocity_random = 0.9
+scale_amount = 3.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.18
+hue_variation_random = 1.0
+
+[node name="ControllerInput" parent="." instance=ExtResource( 5 )]
+
+[node name="ControllerAimPoint" type="Position2D" parent="ControllerInput"]
+position = Vector2( 150, 0 )
